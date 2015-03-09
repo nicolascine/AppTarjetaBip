@@ -1,0 +1,12 @@
+# =======================================
+# CodeIgniter - PHP
+# =======================================
+
+.DS_Store
+codeigniter/application/cache/*
+codeigniter/!application/cache/index.html
+codeigniter/!application/cache/.htaccess
+
+codeigniter/application/logs/*
+codeigniter/!application/logs/index.html
+codeigniter/!application/logs/.htaccess
