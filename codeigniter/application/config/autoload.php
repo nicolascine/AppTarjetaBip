@@ -112,5 +112,10 @@ $autoload['language'] = array();
 $autoload['model'] = array();
 
 
+#CURL 
+#
+$autoload['libraries'] = array('curl');
+#
+
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */
