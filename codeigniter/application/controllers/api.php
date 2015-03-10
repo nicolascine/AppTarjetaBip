@@ -30,7 +30,12 @@ class Api extends REST_Controller
     		$error = "Debes ingresar un ID (identificador tarjeta bip) como parametro";
 	       	$this->response($error);
 		}else{
-			$numTarjeta = $this->get('tarjeta');
+			/**
+			 * IMPORANTE: (int) remueve 0 al inicio (si es que los hay)
+			 * esto valida el ID de la tarjeta, ya que arroja error en tarjetas que comienzan en 0
+			 * El sitio de transantiago, remueve el 0 con javascript en el formulario ~
+			 */
+			$numTarjeta = (int)$this->get('tarjeta');
 			$this->load->library('bip', array($numTarjeta));
 			$this->response($this->bip->getData());
 		}
