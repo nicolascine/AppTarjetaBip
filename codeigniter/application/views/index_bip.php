@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <link rel="dns-prefetch" href="//netdna.bootstrapcdn.com">
+        <link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com">
+        <link rel="dns-prefetch" href="//ajax.googleapis.com">
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
         <meta charset="utf-8">
-        <title>BIP! API REST</title>
+        <title>bip! API REST</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
         <meta name="author" content="Nicolás Silva < nsilvasalinas@gmail.com >">
+        <meta name="description" content="Tarjeta bip! API REST - Consulta estado de la tarjeta bip (medio de pago sistema de transporte Santiago de Chile">
+
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
         <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
@@ -14,12 +20,10 @@
     		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
     		<link rel="stylesheet" href="<?php echo('assets/css/bipapirest.css'); ?>">
         <link rel="stylesheet" href="<?php echo('assets/css/prism.css'); ?>">
-
     		<!--[if lt IE 9]>
     		  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     		<![endif]-->
     </head>
-
 <body>        
  <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
   <div class="container">
@@ -50,7 +54,7 @@
   	<img id="logoHome" src="<?php echo('assets/img/Logo-BIP-API.svg'); ?>" alt="BIP! API REST">
   	<div class="container">
   		<div class="col-sm-6 col-sm-offset-3">
-  			<form id="formuBip" class="navbar-form" method="POST" action="<?php echo ('index.php/buscaestado'); ?>">
+  			<form id="formuBip" class="navbar-form">
   			  <div class="form-group" style="display:inline;">
   			    <div class="input-group"> 
   			      <input type="text" class="form-control" placeholder="Ingresa el número de tu tarjeta BIP" name="numeroTarjetaBip" id="numTarjetaInput">
@@ -99,7 +103,7 @@
 <p class="text-left">El <b>único</b> método soportado por la API es <b>GET</b></p>
 
 
-<table class="table table-bordered apiEjemplo">
+  <table class="table table-bordered apiEjemplo">
       <thead>
         <tr>
           <th>MÉTODO</th>
@@ -246,10 +250,6 @@
               </a>
             </div>
       </div> 
-      
- 
- 
-      
     </div><!--/row-->
     </div><!--/container--> 
   </div>
@@ -295,10 +295,7 @@
     </div><!--/row-->
   </div>
 </footer>
-
-
 <a class="hidden-xs" href="https://github.com/nicolascine/AppTarjetaBIP"><img class="hide-xs" style="position: absolute; top: 0; right: 0; border: 0;z-index:999999;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
-
 <div id="resultadoBusqueda" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -312,108 +309,13 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Gracias!</button>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>
 
 <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="<?php echo('assets/js/prism.js'); ?>"></script>
 <script type='text/javascript' src="<?php echo('assets/js/util.js'); ?>"></script>
-
-     
-<script type='text/javascript'>        
-
-$(document).ready(function() {
-
-$("#enviaForm").click(function( event ) {
-	event.preventDefault();
-	
-	/**
-	 * refresco contenido modal
-	 * @type {String}
-	 */
-	var html = '';
-	$("#resultadoBusqueda .modal-body p").html(html);
-
-
-	/**
-	 * VALIDA NUMERO TARJETA
-	 */
-	 var numTarjeta = $("#numTarjetaInput").val();
-	 if (Trim(numTarjeta) != "") {
-	     numTarjeta = Trim(numTarjeta);
-	     var iPrimerCaracterValido = -1;
-	     for (var iTmp1 = 0; iTmp1 <= numTarjeta.length - 1; iTmp1++) {
-	         if (numTarjeta.substr(iTmp1, 1) != "0") {
-	             iPrimerCaracterValido = iTmp1;
-	             break;
-	         }
-	     }
-	     if (iPrimerCaracterValido >= 0) {
-	         numTarjeta = numTarjeta.substring(iPrimerCaracterValido);
-	     } else {
-	         numTarjeta = "";
-	     }
-	 }
-	 if (Trim(numTarjeta) == "") {
-	     $("#numTarjetaInput").val("");
-	     alert("Por favor, ingrese el número de su tarjeta bip!");
-	     $("#numTarjetaInput").focus();
-	     return false;
-	 }
-	$("#numTarjetaInput").val(numTarjeta);
-
-	if($('#numTarjetaInput').val() === ''){
-		alert("debes completar el campo");
-	}else{
-	    $.ajax({
-            url     : './index.php/buscaestado',
-            type    : $("#formuBip").attr('method'),
-            //dataType: 'json',
-            data    : {'numTarjetaInput' : numTarjeta},
-            dataType: 'json',
-            success : function( data ) {
-                        console.log(' Submitted ');
-                        console.log(data);
-                        var html = data;
-						$("#resultadoBusqueda .modal-body p").html(html);
-						$('#resultadoBusqueda').modal('show');
-                      },
-            error   : function( xhr, err ) {
-            			console.log(' Error ');
-            			var html = data;
-                        $("#resultadoBusqueda .modal-body p").html(json_decode(html));
-						$('#resultadoBusqueda').modal('show');
-					 }
-	   });   	
-	}
-});
-
-
-
-	/* activate scrollspy menu */
-	$('body').scrollspy({
-	  target: '#navbar-collapsible',
-	  offset: 50
-	});
-	/* smooth scrolling sections */
-	$('a[href*=#]:not([href=#])').click(function() {
-	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-	      var target = $(this.hash);
-	      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-	      if (target.length) {
-	        $('html,body').animate({
-	          scrollTop: target.offset().top - 50
-	        }, 500);
-	        return false;
-	      }
-	    }
-	});        
-});
-
-</script>
-
-
     </body>
 </html>
