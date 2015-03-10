@@ -22,31 +22,16 @@ class IndexBip extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function index()
-	{
+	public function index(){
 
-
-		$data['hola'] = implode(',' , $this->input->post());
-
-
-		$numTarjeta = 123456;
-		/**
-		 * Cargo librería BIP!
-		 */
-		$this->load->library('bip', array($numTarjeta));
-		$data['resultado'] = $this->bip->getData();
-		
 		/**
 		 * Cargo vista <INDEX_BIP>
 		 */
-		$this->load->view('index_bip', $data);
-
-
-
-
-
+		$this->load->view('index_bip');
 
 	}
+
+
 }
 
 /* End of file welcome.php */
