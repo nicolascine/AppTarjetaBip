@@ -40,6 +40,11 @@ function Trim(sTmp1) {
 //
 $(document).ready(function() {
 
+    $('#numTarjetaInput').keypress(function(e){
+        if ( e.which == 13 ) return false;
+    });
+
+
 $("#enviaForm").click(function( event ) {
     event.preventDefault();
     
@@ -50,11 +55,19 @@ $("#enviaForm").click(function( event ) {
     var html = '';
     $("#resultadoBusqueda .modal-body p").html(html);
 
-
     /**
      * VALIDA NUMERO TARJETA
      */
-     var numTarjeta = $("#numTarjetaInput").val();
+    
+    var numTarjeta = $("#numTarjetaInput").val();
+    if (!$.isNumeric( numTarjeta )){
+        html = 'ID de la tarjeta inválido. Ingresa sólo numeros';
+        $("#loadingg").hide();
+        $("#resultadoBusqueda .modal-body p").html(html);
+        $('#resultadoBusqueda').modal('show');
+        return false;
+    }
+
      if (Trim(numTarjeta) != "") {
          numTarjeta = Trim(numTarjeta);
          var iPrimerCaracterValido = -1;
