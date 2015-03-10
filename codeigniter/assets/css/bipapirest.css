@@ -53,10 +53,9 @@ h1{
     color:white;
 }
 #section1 {
-	background-color: #168ccc;
-    color:#dedeff;
+	background-color: rgba(0,0,0,0.4);
+    color:white;
 }
-  
 #section2 {
 	background-color: #e5e5ef;
     color:#686868;
@@ -90,7 +89,7 @@ footer {
     text-align: center;
 }
 footer a{
-    color: #279ddd;
+    color: rgb(39,157,221);
     text-decoration: none !important;
     cursor:pointer;
 }
@@ -103,15 +102,73 @@ footer a{
     display:block;
     padding-top:100px;
     padding-bottom:40px;
-}
-.distmenu{
-    margin-right: 100px !important;
+    width:400px;
+    height: auto;
 }
 
 #section2 h1{
     color:#168CCC;
     font-weight: bold;
 }
+/* 
+ * Hack modal bootstrap ..
+*/
+
+.modal {
+  text-align: center;
+}
+
+.modal:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: " ";
+  height: 100%;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+#boxMetodoGet{
+    max-width: 400px;
+}
+input.metodoGet{
+    pointer-events: none; 
+}
+.ejemplo{
+    text-align: left;
+}
+.container.cualidades{
+    margin-top:65px;
+}
+/* Small devices (tablets, 768px and up) */
+@media (max-width:768px) { 
+    #logoHome{
+        margin:0 auto;
+        display:block;
+        padding-top:50px;
+        padding-bottom:40px;
+        width:200px;
+        height: auto;
+    } 
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width:992px) { 
+    .distmenu{
+        margin-right: 100px !important;
+    }
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width:1200px) { 
+    .distmenu{
+        margin-right: 100px !important;
+    }
+}
+
+
+
+
 
 
 
