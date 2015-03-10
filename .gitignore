@@ -20,3 +20,6 @@ angular-cliente/bower_components/
 angular-cliente/.sass-cache/
 angular-cliente/.tmp/
 angular-cliente/dist/
+
+#PX ~
+produccion
