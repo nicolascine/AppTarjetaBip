@@ -92,9 +92,9 @@
   	<div class="col-sm-8 col-sm-offset-2 text-center">
        
 
- <h1>Cómo utilizarlo?</h1>
+ <h1>Documentación API</h1>
         <br>
-    <p class="lead">Existen dos alternativas. Consultar el estado de tu tarjeta bip! mediante el <a href="http://cliente-bip.herokuapp.com"> cliente web <i style="font-size:15px;" class="fa fa-external-link fa-5x"></i> </a> o utilizar el sercivio REST API y obtener la data en formato JSON para el uso que desees (como crear tu propia App)</p>
+    <p class="lead">Existen dos alternativas. Consultar el estado de tu tarjeta bip! mediante el <a href="http://cliente-bip.herokuapp.com"> cliente web <i style="font-size:15px;" class="fa fa-external-link fa-5x"></i> </a> o utilizar el <b>sercivio REST API </b>y obtener la data en formato JSON para el uso que desees (como crear tu propia App)</p>
         <br> 
 <p class="text-left">El <b>único</b> método soportado por la API es <b>GET</b></p>
 
@@ -126,7 +126,7 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">GET http://bip-servicio.herokuapp.com/api/consulta/tarjeta/{id}</th>
+          <th scope="row" class="verdeGet">GET http://bip-servicio.herokuapp.com/api/consulta/tarjeta/{id}</th>
         </tr>
       </tbody>
     </table>    
@@ -139,7 +139,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="verdeGet">
           <th scope="row">id</th>
           <th scope="row">Corresponde al número de identificación de la tarjeta bip!</th>
         </tr>
@@ -149,7 +149,7 @@
   <br>
   <div class="ejemplo">
     <h4>Ejemplo REQUEST</h4>
-    Al hacer una llamada GET se obtiene un JSON con la data del estado de la tarjeta
+    Al hacer una llamada GET se obtiene por defecto un JSON con la data del estado de la tarjeta
     <pre>http://bip-servicio.herokuapp.com/api/consulta/tarjeta/<b>123456</b></pre>
     donde <b>123456</b> corresponde al número de identificación de la tarjeta bip!<br><br>
     <h4>Ejemplo RESPONSE</h4>
@@ -190,13 +190,11 @@
 </xml>
 </script>
 </code></pre>
-
-    <h4>Restricciones</h4>
+    <br>
+    <h4><b>Restricciones</b></h4>
     <ul>
-      <li>El estado del servicio depende del <a href="http://www.tarjetabip.cl/" target="_blank">sitio oficial de la tarjeta bip!</a>, por lo que si su servidor está caído, esta API tambien lo estará =(</li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li>La App está optimizada para la consulta de estado de <b>la tarjeta bip! genérica</b>, con tarjetas propietarias de terceros (bancos, etc) cuyo uso está asociado a un RUT podrían haber errores</li>
+      <li>El estado del servicio depende del <a href="http://www.tarjetabip.cl/" target="_blank">sitio oficial de la tarjeta bip!</a>, por lo tanto, si el servidor oficial de Transantiago está caído, esta API tambien lo estará =(</li>
     </ul>
   </div>
 
@@ -370,7 +368,7 @@ $("#enviaForm").click(function( event ) {
 		alert("debes completar el campo");
 	}else{
 	    $.ajax({
-            url     : $("#formuBip").attr('action'),
+            url     : './index.php/buscaestado',
             type    : $("#formuBip").attr('method'),
             //dataType: 'json',
             data    : {'numTarjetaInput' : numTarjeta},
