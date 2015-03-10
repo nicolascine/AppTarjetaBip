@@ -12,8 +12,8 @@
         <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
     		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-    		<link rel="stylesheet" href="<?php echo(CSS.'bipapirest.css'); ?>">
-        <link rel="stylesheet" href="<?php echo(CSS.'prism.css'); ?>">
+    		<link rel="stylesheet" href="<?php echo('assets/css/bipapirest.css'); ?>">
+        <link rel="stylesheet" href="<?php echo('assets/css/prism.css'); ?>">
 
     		<!--[if lt IE 9]>
     		  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,7 +31,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#section1">
-		<img src="<?php echo(IMG.'Logo-BIP-API.svg'); ?>" alt="BIP! API REST" width="150" height="auto">
+		<img src="<?php echo('assets/img/Logo-BIP-API.svg'); ?>" alt="BIP! API REST" width="150" height="auto">
       </a>
     </div>
     <div class="navbar-collapse collapse distmenu" id="navbar-collapsible">
@@ -47,10 +47,10 @@
 
 <section class="container-fluid" id="section1">
 
-  	<img id="logoHome" src="<?php echo(IMG.'Logo-BIP-API.svg'); ?>" alt="BIP! API REST">
+  	<img id="logoHome" src="<?php echo('assets/img/Logo-BIP-API.svg'); ?>" alt="BIP! API REST">
   	<div class="container">
   		<div class="col-sm-6 col-sm-offset-3">
-  			<form id="formuBip" class="navbar-form" method="POST" action="<?php echo (URL. 'index.php/buscaestado'); ?>">
+  			<form id="formuBip" class="navbar-form" method="POST" action="<?php echo ('index.php/buscaestado'); ?>">
   			  <div class="form-group" style="display:inline;">
   			    <div class="input-group"> 
   			      <input type="text" class="form-control" placeholder="Ingresa el número de tu tarjeta BIP" name="numeroTarjetaBip" id="numTarjetaInput">
@@ -207,7 +207,7 @@
 	<h2 class="text-center">Change this Content. Change the world.</h2>
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
-      <img src="<?php echo(IMG.'bg_smartphones.jpg'); ?>" class="img-responsive center-block ">
+      <img src="<?php echo('assets/img/bg_smartphones.jpg'); ?>" class="img-responsive center-block ">
       <p class="text-center">Images will scale down proportionately as browser width narrows.</p>
       </div>
     </div>
@@ -318,8 +318,8 @@
 
 <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script type='text/javascript' src="<?php echo(JS.'prism.js'); ?>"></script>
-<script type='text/javascript' src="<?php echo(JS.'util.js'); ?>"></script>
+<script type='text/javascript' src="<?php echo('assets/js/prism.js'); ?>"></script>
+<script type='text/javascript' src="<?php echo('assets/js/util.js'); ?>"></script>
 
      
 <script type='text/javascript'>        

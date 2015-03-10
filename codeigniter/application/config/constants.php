@@ -38,14 +38,6 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
 
-/**
- * ASSETS
- */
-
-define('URL','http://127.0.0.1/neurobits/postulacion-gobierno/tarjetaBip/codeigniter/');
-define('IMG',URL.'assets/img/');
-define('CSS',URL.'assets/css/');
-define('JS',URL.'assets/js/');
 
 
 /* End of file constants.php */
