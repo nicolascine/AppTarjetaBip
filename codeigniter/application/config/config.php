@@ -17,6 +17,7 @@
 #$config['base_url']	= '';
 $config['base_url'] = URL;
 
+
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -27,7 +28,7 @@ $config['base_url'] = URL;
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
