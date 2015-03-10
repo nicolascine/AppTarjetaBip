@@ -142,6 +142,17 @@ input.metodoGet{
 .container.cualidades{
     margin-top:65px;
 }
+
+.apiEjemplo, table tr{
+    background:white;
+    border: 1px solid #3c763d !important;
+    text-align: left;
+}
+.verdeGet{
+    color:#3c763d;
+    background: #dff0d8;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (max-width:768px) { 
     #logoHome{
