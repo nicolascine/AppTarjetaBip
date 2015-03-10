@@ -16,7 +16,7 @@ class Bip{
 	/**
 	 * Constructor de la clase
 	 * Recibe ID de la tarjeta bip!
-	 * @param $idNumber
+	 * @param Int $idNumber
 	 */
 	public function __construct($numTarjeta) {
 
@@ -40,16 +40,18 @@ class Bip{
 			return null;
 
 		} else {
-
+			/**
+			 * comienza el scraping q(o.~)p
+			 * */
 			$url = "http://pocae.tstgo.cl/PortalCAE-WAR-MODULE/SesionPortalServlet?accion=6&NumDistribuidor=99&NomUsuario=usuInternet&NomHost=AFT&NomDominio=aft.cl&Trx=&RutUsuario=0&NumTarjeta=";
 			$url .= $idTarjeta;
 			$url .= "&bloqueable=";
 			$dataArr = $this->CI->curl->simple_get($url);
 			
-			$dom 	= new DOMDocument();
+			$dom = new DOMDocument();
 			$dom->preserveWhiteSpace = false;
 			
-			$data	= $this->searchTags($dataArr, '<table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">', '</table>');
+			$data = $this->searchTags($dataArr, '<table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">', '</table>');
 			
 			if (!empty($data)) {
 
