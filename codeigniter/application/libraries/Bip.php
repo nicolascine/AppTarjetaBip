@@ -51,35 +51,58 @@ class Bip{
 			
 			$dom 	= new DOMDocument();
 			$dom->preserveWhiteSpace = false;
-
-			$data	= $this->searchTags($dataArr, '<table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">', '</table>');
-			$dom->loadHTML($data);
-			$colums = $dom->getElementsByTagName('td');
-			$dataArr= array();
-			$name	= "";
 			
-			for ($i = 0; $i < $colums->length; $i++) {
-				$objDOM = $colums->item($i);
-				
-				if($name == ""){
-					$name = substr(trim(htmlentities($objDOM->textContent)), 0, -1);
-				}else{
-					$dataArr[$name] = trim(htmlentities($objDOM->textContent));
-					$name = "";
-				}
-			}
+			$data	= $this->searchTags($dataArr, '<table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">', '</table>');
+			
+			if (!empty($data)) {
 
-			if(count($dataArr) < 4){
-				$dataArr = array('respuesta' => 'Tarjeta inválida');
-				return json_encode($dataArr);
+				$dom->loadHTML($data);
+				$colums = $dom->getElementsByTagName('td');
+				$dataArr= array();
+				$name	= "";
+
+				/**
+				 * Reemplaza textos por nombres de variables
+				 */			
+				$search  = array('N&ordm; tarjeta bip! ', 'Estado de contrato', 'Saldo  tarjeta', 'Fecha saldo');
+				$replace = array('idTarjeta', 'estadoContrato', 'saldoTarjeta', 'fechaSaldo');
+
+
+				for ($i = 0; $i < $colums->length; $i++) {
+					$objDOM = $colums->item($i);
+					
+					if($name == ""){
+						$name = substr(trim(htmlentities($objDOM->textContent)), 0, -1);
+						
+					}else{
+						/**
+						 * REEMPLAZO CON < str_replace > nombres de la clave ~
+						 * @var [string]
+						 */
+						$name = str_replace($search, $replace, $name);
+
+						$dataArr[$name] = trim(htmlentities($objDOM->textContent));
+						$name = "";
+					}
+				}
+
+				if(count($dataArr) < 4){
+					$dataArr = array('respuesta' => 'Tarjeta inválida');
+					return json_encode($dataArr);
+				}
+				//return json_encode($dataArr);
+ 
+
+				return $dataArr;		
+
+
 			}
-			return json_encode($dataArr);
 		}
 	} 
 
 	/**
 	 * searchTags
-	 * Scraping ~ 
+	 * más Scraping ~ 
 	 * @param  [type] $string [description]
 	 * @param  [type] $start  [description]
 	 * @param  [type] $end    [description]
@@ -91,8 +114,8 @@ class Bip{
 		if ($ini == 0)return "";
 		$ini += strlen($start);
 		$len = strpos($string, $end, $ini) - $ini;
-		
 		return trim(substr($string, $ini, $len));
+
 	}
 
 } 
