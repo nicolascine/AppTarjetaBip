@@ -87,20 +87,24 @@ $("#enviaForm").click(function( event ) {
             //dataType: 'json',
             data    : {'numTarjetaInput' : numTarjeta},
             dataType: 'json',
+            beforeSend: function(){
+                $("#loadingg").show();
+                $('#resultadoBusqueda').modal('show');
+            },
             success : function( data ) {
-
+                      $("#loadingg").hide();
                       var html   = '<b>Saldo tarjeta bip: </b>'+data.saldoTarjeta+'<br>';
                           html  += '<b>Fecha saldo: </b>'+data.fechaSaldo+'<br>';
                           html  += '<b>ID Tarjeta: </b>'+data.idTarjeta+'<br>';
                           html  += '<b>Estado contrato: </b>'+data.estadoContrato+'<br>';
                       if(data === 'ID de la tarjeta invalido'){html = 'ID de la tarjeta inválido'};
                                 $("#resultadoBusqueda .modal-body p").html(html);
-                                $('#resultadoBusqueda').modal('show');
+                                
           }, error   : function( xhr, err ) {
+                        $("#loadingg").hide();
                         console.log(' Error =( ');
                         var html = data;
                         $("#resultadoBusqueda .modal-body p").html(json_decode(html));
-                        $('#resultadoBusqueda').modal('show');
                      }
            });      
         }

@@ -304,6 +304,7 @@
         <h4 class="modal-title">Resultado de búsqueda</h4>
       </div>
       <div class="modal-body">
+        <button id="loadingg" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Buscando...</button>
         <p></p>
       </div>
       <div class="modal-footer">
