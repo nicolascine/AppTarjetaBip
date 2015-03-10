@@ -1,14 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-//$this->load->library('curl'); 
-//
+/**
+ * 
+ */
 class Bip{
-	/**
-	 * Objeto string estático que contiene 
-	 * descripción para el browser.
-	 */
-	protected static $browser = "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6 (.NET CLR 3.5.30729)";
-	
+
 	/**
 	 * $CI extiende desde code igniter ~
 	 * @var [type]
@@ -19,20 +15,20 @@ class Bip{
 
 	/**
 	 * Constructor de la clase
-	 * 
+	 * Recibe ID de la tarjeta bip!
 	 * @param $idNumber
 	 */
 	public function __construct($numTarjeta) {
 
 		$this->CI = &get_instance();
 		$this->CI->load->library('curl');
-		//$CI->your_library->do_something();
-
 		$this->idNumber = $numTarjeta;
-
 	}
 
-
+	/**
+	 * [getData description]
+	 * @return [type] [description]
+	 */
  	public function getData() {
  		/**
  		 * Previene error : Array to string conversion (codeIgniter)
@@ -44,6 +40,7 @@ class Bip{
 			return null;
 
 		} else {
+
 			$url = "http://pocae.tstgo.cl/PortalCAE-WAR-MODULE/SesionPortalServlet?accion=6&NumDistribuidor=99&NomUsuario=usuInternet&NomHost=AFT&NomDominio=aft.cl&Trx=&RutUsuario=0&NumTarjeta=";
 			$url .= $idTarjeta;
 			$url .= "&bloqueable=";
@@ -62,10 +59,11 @@ class Bip{
 				$name	= "";
 
 				/**
-				 * Reemplaza textos por nombres de variables
+				 * Define textos que serán reemplazados (desde el scraping en las tablas que despliegan la info)
+				 * por nombres de variables
 				 */			
-				$search  = array('N&ordm; tarjeta bip! ', 'Estado de contrato', 'Saldo  tarjeta', 'Fecha saldo');
-				$replace = array('idTarjeta', 'estadoContrato', 'saldoTarjeta', 'fechaSaldo');
+				$search  = array('N&ordm; tarjeta bip! ', 'Estado de contrato', 'Saldo  tarjeta', 'Fecha saldo', 'Vencimiento Cuotas de transporte', 'Fecha Vencimiento');
+				$replace = array('idTarjeta', 'estadoContrato', 'saldoTarjeta', 'fechaSaldo', 'vencimientoCT', 'fechaVencimiento');
 
 
 				for ($i = 0; $i < $colums->length; $i++) {
@@ -75,27 +73,26 @@ class Bip{
 						$name = substr(trim(htmlentities($objDOM->textContent)), 0, -1);
 						
 					}else{
+
 						/**
 						 * REEMPLAZO CON < str_replace > nombres de la clave ~
-						 * @var [string]
+						 * desde el array $search y $replace
 						 */
 						$name = str_replace($search, $replace, $name);
-
 						$dataArr[$name] = trim(htmlentities($objDOM->textContent));
 						$name = "";
 					}
 				}
 
 				if(count($dataArr) < 4){
-					$dataArr = array('respuesta' => 'Tarjeta inválida');
-					return json_encode($dataArr);
+					$dataArr = 'ID de la tarjeta invalido';
+					return $dataArr;
 				}
 				//return json_encode($dataArr);
- 
-
 				return $dataArr;		
-
-
+			}else{
+				$dataArr = 'ID de la tarjeta invalido';
+				return $dataArr;
 			}
 		}
 	} 
@@ -103,10 +100,6 @@ class Bip{
 	/**
 	 * searchTags
 	 * más Scraping ~ 
-	 * @param  [type] $string [description]
-	 * @param  [type] $start  [description]
-	 * @param  [type] $end    [description]
-	 * @return [type]         [description]
 	 */
 	public static function searchTags($string, $start, $end) {
 		$string = " " . $string;
