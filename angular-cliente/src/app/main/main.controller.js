@@ -25,6 +25,7 @@ angular.module('angularCliente')
               $scope.despliega = true;
               $scope.loading = false;
               $scope.items = data;
+              if($scope.items.saldoTarjeta === '---')$scope.items.saldoTarjeta = '$0';
               if($scope.items == 'ID de la tarjeta invalido'){
                 $scope.despliega = false;
                 $scope.invalido = true;
@@ -36,6 +37,4 @@ angular.module('angularCliente')
             $scope.invalido = true;
           })
       }
-
-
 });
