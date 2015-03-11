@@ -10,7 +10,7 @@ La App de divide en 2 partes, por un lado el servicio REST (CodeIgniter) que uti
 #### Requerimientos Instalación
 Para instalar la App (servicio) sólo es necesario correr la carpeta "codeigniter-servicio" en un servidor que soporte:
 - PHP 5.x
-- mod_rewrite (php) activado
+- mod_rewrite (Apache, o su equivalente en nginx)
 - cURL
 
 
