@@ -15,5 +15,4 @@ class IndexBip extends CI_Controller {
 
 	}
 
-
 }

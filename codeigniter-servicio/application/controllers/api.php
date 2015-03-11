@@ -9,6 +9,19 @@ require APPPATH.'/libraries/REST_Controller.php';
 
 class Api extends REST_Controller
 {
+
+	function __construct(){
+		parent::__construct();
+
+		header('Access-Control-Allow-Origin: *');
+		header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+		header("Access-Control-Allow-Methods: GET");
+		$method = $_SERVER['REQUEST_METHOD'];
+		if($method == "OPTIONS") {
+		die();
+		}
+	}
+
 	/*
 	 * Método Index, sólo con fines de indicar posible error.
 	 * Las llamadas se reciben sólo por el metodo consulta_get();

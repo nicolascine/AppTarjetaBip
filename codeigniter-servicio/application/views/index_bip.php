@@ -43,7 +43,6 @@
         <li><a href="#section1">Qué es</a></li>
         <li><a href="#section2">Documentación API</a></li>
         <li><a href="#section4">Cliente Web</a></li>
-        <li><a href="#section5">Créditos</a></li>
       </ul>
     </div>
   </div>
@@ -98,7 +97,7 @@
 
  <h1>Documentación API</h1>
         <br>
-    <p class="lead">Existen dos alternativas. Consultar el estado de tu tarjeta bip! mediante el <a href="http://cliente-bip.herokuapp.com"> cliente web <i style="font-size:15px;" class="fa fa-external-link fa-5x"></i> </a> o utilizar el <b>sercivio REST API </b>y obtener la data en formato JSON para el uso que desees (como crear tu propia App)</p>
+    <p class="lead">Existen dos alternativas. Consultar el estado de tu tarjeta bip! mediante el <a href="http://bip-cliente.herokuapp.com" target="_blank"> cliente web <i style="font-size:15px;" class="fa fa-external-link fa-5x"></i> </a> o utilizar el <b>sercivio REST API </b>y obtener la data en formato JSON para el uso que desees (como crear tu propia App)</p>
         <br> 
 <p class="text-left">El <b>único</b> método soportado por la API es <b>GET</b></p>
 
@@ -208,83 +207,18 @@
 </section>
 
 <section class="container-fluid" id="section4">
-	<h2 class="text-center">Change this Content. Change the world.</h2>
+	<h2 class="text-center">Cliente web </h2>
+  <h4 class="text-center">Consulta el saldo de la tarjeta bip! mediante el<a href="http://bip-cliente.herokuapp.com" target="_blank"> cliente web <i style="font-size:15px;" class="fa fa-external-link fa-5x"></i> </a></h4>
+<br>
     <div class="row">
+
       <div class="col-sm-8 col-sm-offset-2">
       <img src="<?php echo('assets/img/bg_smartphones.jpg'); ?>" class="img-responsive center-block ">
-      <p class="text-center">Images will scale down proportionately as browser width narrows.</p>
+      <p class="text-center">App en Angular + Materializecss optimizado para moviles</p>
       </div>
     </div>
 </section>
 
-<section class="container-fluid" id="section5">
-  <div class="col-sm-12">
-    <div class="container">
-    <div class="row">
-      <div class="col-sm-4 col-xs-12">
-            <div class="list-group">
-              <a href="#" class="list-group-item active">
-                <h2 class="list-group-item-heading">Basic</h2>
-                <h6>Free to get started</h6>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 100 - more about this</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 2 - this is more about this</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 3 GB</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 4</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Feature</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Feature</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <button class="btn btn-primary btn-lg btn-block">Get Started</button>
-              </a>
-            </div>
-      </div> 
-    </div><!--/row-->
-    </div><!--/container--> 
-  </div>
-</section>
-
-<section class="container" id="section7">
-	<h1 class="text-center">Redes Sociales Transantiago</h1>
-    <div class="row">
-      <!--fontawesome icons-->
-      <div class="col-sm-1 col-sm-offset-2 col-xs-4 text-center">
-       <i class="fa fa-github fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-foursquare fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       	<i class="fa fa-facebook fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-pinterest fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-google-plus fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-twitter fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-dribbble fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-instagram fa-4x"></i>
-      </div>
-  </div><!--/row-->
-</section>
 
 <footer id="footer">
   <div class="container">
@@ -295,7 +229,7 @@
     </div><!--/row-->
   </div>
 </footer>
-<a class="hidden-xs" href="https://github.com/nicolascine/AppTarjetaBIP"><img class="hide-xs" style="position: absolute; top: 0; right: 0; border: 0;z-index:999999;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
+<a class="hidden-xs" href="https://github.com/nicolascine/AppTarjetaBip.git"><img class="hide-xs" style="position: absolute; top: 0; right: 0; border: 0;z-index:999999;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
 <div id="resultadoBusqueda" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
