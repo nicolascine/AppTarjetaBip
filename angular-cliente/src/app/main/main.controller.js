@@ -1,64 +1,39 @@
 'use strict';
 
 angular.module('angularCliente')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      {
-        'title': 'AngularJS',
-        'url': 'https://angularjs.org/',
-        'description': 'HTML enhanced for web apps!',
-        'logo': 'angular.png'
-      },
-      {
-        'title': 'BrowserSync',
-        'url': 'http://browsersync.io/',
-        'description': 'Time-saving synchronised browser testing.',
-        'logo': 'browsersync.png'
-      },
-      {
-        'title': 'GulpJS',
-        'url': 'http://gulpjs.com/',
-        'description': 'The streaming build system.',
-        'logo': 'gulp.png'
-      },
-      {
-        'title': 'Jasmine',
-        'url': 'http://jasmine.github.io/',
-        'description': 'Behavior-Driven JavaScript.',
-        'logo': 'jasmine.png'
-      },
-      {
-        'title': 'Karma',
-        'url': 'http://karma-runner.github.io/',
-        'description': 'Spectacular Test Runner for JavaScript.',
-        'logo': 'karma.png'
-      },
-      {
-        'title': 'Protractor',
-        'url': 'https://github.com/angular/protractor',
-        'description': 'End to end test framework for AngularJS applications built on top of WebDriverJS.',
-        'logo': 'protractor.png'
-      },
-      {
-        'title': 'jQuery',
-        'url': 'http://jquery.com/',
-        'description': 'jQuery is a fast, small, and feature-rich JavaScript library.',
-        'logo': 'jquery.jpg'
-      },
-      {
-        'title': 'Bootstrap',
-        'url': 'http://getbootstrap.com/',
-        'description': 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.',
-        'logo': 'bootstrap.png'
-      },
-      {
-        'title': 'Less',
-        'url': 'http://lesscss.org/',
-        'description': 'Less extends the CSS language, adding features that allow variables, mixins, functions and many other techniques.',
-        'logo': 'less.png'
+  .controller('MainCtrl', function ($scope, $http) {
+    $scope.date = new Date();
+    $scope.items = []
+    $scope.ingresaNum = true;
+    //check if is number
+    function isNumber(obj) { return !isNaN(parseFloat(obj)) }
+
+      $scope.getItems = function() {
+      if(!isNumber($scope.sendIdtarjeta)){
+        $scope.despliega = false;
+        $scope.invalido = true;
+        return false;
       }
-    ];
-    angular.forEach($scope.awesomeThings, function(awesomeThing) {
-      awesomeThing.rank = Math.random();
-    });
-  });
+       $scope.ingresaNum = false;
+       $scope.loading = true;
+       $scope.despliega = false;
+       $scope.invalido = false;
+       $http({method : 'GET',url : 'http://bip-servicio.herokuapp.com/api/consulta/tarjeta/'+$scope.sendIdtarjeta})
+          .success(function(data, status) {
+              $scope.despliega = true;
+              $scope.loading = false;
+              $scope.items = data;
+              if($scope.items == 'ID de la tarjeta invalido'){
+                $scope.despliega = false;
+                $scope.invalido = true;
+              }
+           })
+          .error(function(data, status) {
+            $scope.loading = false;
+            $scope.despliega = false;
+            $scope.invalido = true;
+          })
+      }
+
+
+});
