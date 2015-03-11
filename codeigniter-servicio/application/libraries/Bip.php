@@ -1,18 +1,19 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * 
+ * Clase Bip
+ * Recibe ID a consultar
+ * Hace scraping mediante la librería Curl
+ * Devuelve Array (PHP) para servir luego en formato JSON
  */
 class Bip{
 
 	/**
-	 * $CI extiende desde code igniter ~
-	 * @var [type]
+	 * $CI extiende desde code igniter
 	 */
 	private $CI;
 	private $idNumber;
 	
-
 	/**
 	 * Constructor de la clase
 	 * Recibe ID de la tarjeta bip!
@@ -26,13 +27,14 @@ class Bip{
 	}
 
 	/**
-	 * [getData description]
-	 * @return [type] [description]
+	 * Realiza el scraping, en caso de éxito devuelve envía Array con la data al controlador.
+	 * En caso de error retorna string con mensaje de error.
+	 * @param Array  $dataArr resultado de la busqueda, estado tarjeta bip
+	 * @param String $dataArr Mensaje erorr
 	 */
  	public function getData() {
  		/**
  		 * Previene error : Array to string conversion (codeIgniter)
- 		 * @var [type]
  		 */
  		$idTarjeta = implode(',' , $this->idNumber);
 
@@ -40,6 +42,7 @@ class Bip{
 			return null;
 
 		} else {
+
 			/**
 			 * comienza el scraping q(o.~)p
 			 * */

@@ -1,20 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/*
+ * Controlador para consultas internas (ajax en landing page)
+ */
 class BuscaEstado extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
 	}
-	
 	/**
-	 * Método Index, del controlador "BuscaEstado"
-	 * Incluye validación. Sólo se admiten request vía AJAX en este método.
+	 * Consulta estado de la bip en el landing page de la app ~
+	 * Incluye validación. Sólo admite request vía AJAX en este método.
 	 * @return JSON [devuelve resultado de la busqueda según ID de tarjeta]
 	 */
 	public function index(){
 
 		if($this->input->is_ajax_request()) {
 			
+			/*
+			 * (int) remueve 0 al inicio (si es que los hay)
+			 */
 			$numTarjeta = (int)$this->input->post('numTarjetaInput');
 
 			/**

@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/*
+ * Muestra la vista index del sitio 
+ */
 class IndexBip extends CI_Controller {
 	
 	function __construct(){
