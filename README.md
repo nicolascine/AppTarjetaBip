@@ -5,7 +5,7 @@
 #####Cliente web: [http://bip-cliente.herokuapp.com](http://bip-cliente.herokuapp.com)
 
 ### Descripción
-La App de divide en 2 partes, por un lado el servicio REST (CodeIgniter) que utiliza cURL para "scrapear" el sitio oficial del transantiago, consultado el estado de xxxxxx. Por otro lado el cliente (Angular, Materializecss) consulta los datos y los presenta amigablemente en la ui.
+La App de divide en 2 partes, por un lado el servicio REST (CodeIgniter) que utiliza cURL para "scrapear" el sitio oficial del transantiago, consultado el estado de la tarjeta bip!. Por otro lado el cliente (Angular, Materializecss) consulta los datos y los presenta amigablemente en la ui.
 
 #### Requerimientos Instalación
 Para instalar la App (servicio) sólo es necesario correr la carpeta "codeigniter-servicio" en un servidor que soporte:
@@ -42,7 +42,7 @@ Al hacer una llamada GET se obtiene un JSON con la data del estado de la tarjeta
 ```
 http://bip-servicio.herokuapp.com/api/consulta/tarjeta/123456
 ```
-donde __123456__ corresponde al número de identificación de XXXX
+donde __123456__ corresponde al número de identificación de la tarjeta Bip.
 Siguiendo el ejemplo anterior, obtenemos de vuelta el siguiente JSON:
 ```
 {
