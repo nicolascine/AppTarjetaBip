@@ -53,13 +53,11 @@ Siguiendo el ejemplo anterior, obtenemos de vuelta el siguiente JSON:
 }
 ```
 ### Opciones adicionales
-Mediante el parámetro __format__ podemos indicar en qué formato recibiremos la información
+Mediante el parámetro __format__ podemos indicar en qué formato recibiremos la información (por defecto JSON)
 
 JSON  : api/consulta/tarjeta/{id}__?format=json__    
 XML   : api/consulta/tarjeta/{id}__?format=xml__    
 HTML  : api/consulta/tarjeta/{id}__?format=html__    
-
-El formato por defecto es JSON
 
 Ejemplo: Si indicamos como parámetro __?format=xml__
 
