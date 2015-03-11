@@ -1,4 +1,4 @@
-![alt tag](https://raw.githubusercontent.com/nicolascine/AppTarjetaBip/master/codeigniter/assets/img/logo_repo.png)
+![alt tag](https://raw.githubusercontent.com/nicolascine/AppTarjetaBip/master/codeigniter-servicio/assets/img/logo_repo.png)
 ===========
 
 #####App en produccion: [http://bip-servicio.herokuapp.com](http://bip-servicio.herokuapp.com)
