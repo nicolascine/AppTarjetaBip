@@ -6,10 +6,12 @@ angular.module('angularCliente')
     $scope.items = []
     $scope.ingresaNum = true;
     //check if is number
-    function isNumber(obj) { return !isNaN(parseFloat(obj)) }
-
+    function isInt(value) {
+      var er = /^-?[0-9]+$/;
+      return er.test(value);
+    }
       $scope.getItems = function() {
-      if(!isNumber($scope.sendIdtarjeta)){
+      if(!isInt($scope.sendIdtarjeta)){
         $scope.despliega = false;
         $scope.invalido = true;
         return false;
