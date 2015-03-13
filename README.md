@@ -20,7 +20,7 @@ ___
 ## Documentación API
 El único método soportado es __GET__
 ```
-api/consulta/tarjeta/{id} 
+GET /api/v1/solicitudes.json?bip={id}
 ```
 
 | METHOD        | ENDPOINT                          | USAGE          | RETURNS   |
