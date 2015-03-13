@@ -60,7 +60,7 @@ $("#enviaForm").click(function( event ) {
      */
     
     var numTarjeta = $("#numTarjetaInput").val();
-    if (!$.isNumeric( numTarjeta )){
+    if (!$.isNumeric(numTarjeta)){
         html = 'ID de la tarjeta inválido. Ingresa sólo numeros';
         $("#loadingg").hide();
         $("#resultadoBusqueda .modal-body p").html(html);
@@ -95,10 +95,10 @@ $("#enviaForm").click(function( event ) {
         alert("debes completar el campo");
     }else{
         $.ajax({
-            url     : './index.php/buscaestado',
-            type    : 'POST',
-            //dataType: 'json',
-            data    : {'numTarjetaInput' : numTarjeta},
+            url     : 'api/v1/solicitudes.json',
+            type    : 'GET',
+            dataType: 'json',
+            data    : {'bip' : numTarjeta},
             dataType: 'json',
             beforeSend: function(){
                 $("#loadingg").show();
@@ -114,15 +114,13 @@ $("#enviaForm").click(function( event ) {
                                 $("#resultadoBusqueda .modal-body p").html(html);
                                 
           }, error   : function( xhr, err ) {
-                        $("#loadingg").hide();
-                        console.log(' Error =( ');
-                        var html = data;
-                        $("#resultadoBusqueda .modal-body p").html(json_decode(html));
+                        $("#loadingg").hide(); 
+                        var html = 'id de tarjeta inválido';
+                        $("#resultadoBusqueda .modal-body p").html(html);
                      }
            });      
         }
     });
-
     /* activate scrollspy menu */
     $('body').scrollspy({
       target: '#navbar-collapsible',
