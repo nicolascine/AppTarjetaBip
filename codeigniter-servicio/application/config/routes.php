@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "indexbip";
+$route['api/v1/(:any)'] = "api_v1/api";
 $route['404_override'] = '';
 
 
