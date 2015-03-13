@@ -24,7 +24,7 @@
     		  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     		<![endif]-->
     </head>
-<body>        
+<body>
  <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -56,7 +56,7 @@
   			<form id="formuBip" class="navbar-form">
   			  <div class="form-group" style="display:inline;">
   			    <div class="input-group"> 
-  			      <input type="text" class="form-control" placeholder="Ingresa el número de tu tarjeta BIP" name="numeroTarjetaBip" id="numTarjetaInput">
+  			      <input type="text" class="form-control" placeholder="Ingresa el número de tu tarjeta BIP" name="numeroTarjetaBip" id="numTarjetaInput" maxlength="10">
   			      <span id="enviaForm" class="input-group-addon botonEnviar"><span class="glyphicon glyphicon-search"></span></span>
   			    </div>
   			  </div>
@@ -114,9 +114,9 @@
       <tbody>
         <tr>
           <th scope="row" class="verdeGet">GET</th>
-          <td>api/consulta/tarjeta/{id}</td>
-          <td>Get bip! status</td>
-          <td>Status tarjeta bip!</td>
+          <td>/api/v1/solicitudes.json?bip={id}</td>
+          <td>Get bip status</td>
+          <td>Status bip</td>
         </tr>
       </tbody>
     </table>
@@ -129,7 +129,7 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row" class="verdeGet">GET http://bip-servicio.herokuapp.com/api/consulta/tarjeta/{id}</th>
+          <th scope="row" class="verdeGet">GET http://bip-servicio.herokuapp.com/api/v1/solicitudes.json?bip={123456}</th>
         </tr>
       </tbody>
     </table>    
@@ -153,46 +153,95 @@
   <div class="ejemplo">
     <h4>Ejemplo REQUEST</h4>
     Al hacer una llamada GET se obtiene por defecto un JSON con la data del estado de la tarjeta
-    <pre>http://bip-servicio.herokuapp.com/api/consulta/tarjeta/<b>123456</b></pre>
+    <pre>http://bip-servicio.herokuapp.com/api/v1/solicitudes.json?bip=<b>123456</b></pre>
     donde <b>123456</b> corresponde al número de identificación de la tarjeta bip!<br><br>
     <h4>Ejemplo RESPONSE</h4>
     Siguiendo el ejemplo anterior, la respuesta obtenida sería la siguiente:
 <pre><code class="language-javascript">
 {
-  "idTarjeta": "123456",
+  "id": "123456",
   "estadoContrato": "Contrato Activo",
   "saldoTarjeta": "$2.120",
   "fechaSaldo": "05/01/2005 20:14"
 }
 </code></pre>
     <br>
+    <h3>Formatos de respuesta</h3>
     <h4>Opciones adicionales</h4>
-    <p>Puedes indicar mediante el parámetro <b>format</b> el formato de respuesta</p>
+    <p>Por defecto los datos se entregan en formato <b>JSON</b>, pero puedes indicar el formato esperado según las siguientes opciones</p>
     <div id="boxMetodoGet" class="form-group has-success has-feedback">
       <div class="input-group">
         <span class="input-group-addon">JSON</span>
-        <input type="text" class="form-control metodoGet" id="inputGroupSuccess4" value="/api/consulta/tarjeta/{id}?format=json" aria-describedby="inputGroupSuccess4Status">
+        <input type="text" class="form-control metodoGet" id="inputGroupSuccess4" value="/api/v1/solicitudes.json?bip={id}" aria-describedby="inputGroupSuccess4Status">
       </div>      
       <br>
       <div class="input-group">
         <span class="input-group-addon">XML</span>
-        <input type="text" class="form-control metodoGet" id="inputGroupSuccess4" value="/api/consulta/tarjeta/{id}?format=xml" aria-describedby="inputGroupSuccess4Status">
+        <input type="text" class="form-control metodoGet" id="inputGroupSuccess4" value="/api/v1/solicitudes.xml?bip={id}" aria-describedby="inputGroupSuccess4Status">
+      </div>      
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">PHP</span>
+        <input type="text" class="form-control metodoGet" id="inputGroupSuccess4" value="/api/v1/solicitudes.php?bip={id}" aria-describedby="inputGroupSuccess4Status">
+      </div>      
+      <p>(<b>texto plano</b> formateado como un Array de PHP)</p>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">CSV</span>
+        <input type="text" class="form-control metodoGet" id="inputGroupSuccess4" value="/api/v1/solicitudes.csv?bip={id}" aria-describedby="inputGroupSuccess4Status">
+      </div>      
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">SERIALIZED</span>
+        <input type="text" class="form-control metodoGet" id="inputGroupSuccess4" value="/api/v1/solicitudes.serialized?bip={id}" aria-describedby="inputGroupSuccess4Status">
       </div>
     </div>
-    <p>Ejemplo: Si indicamos como parámetro <b>?format=xml</b></p>
-    <pre>http://bip-servicio.herokuapp.com/api/consulta/tarjeta/123456<b>?format=xml</b></pre>
+    <br>
+    <h4>Ejemplo: Si indicamos el formato XML</h4>
+    <pre>http://bip-servicio.herokuapp.com/api/v1/<b>solicitudes.xml</b>?bip=12346</pre>
     <br>
     <p>Obtendremos el siguiente resultado</p>
 <pre><code class="language-markup">
 <script type="prism-html-markup">
 <xml>
-  <idTarjeta>123456</idTarjeta>
+  <id>123456</id>
   <estadoContrato>Contrato Activo</estadoContrato>
   <saldoTarjeta>$2.120</saldoTarjeta>
   <fechaSaldo>05/01/2005 20:14</fechaSaldo>
 </xml>
 </script>
 </code></pre>
+
+<br>
+<h4><b>HTTP Status</b></h4>
+<p>Cada respuesta incluirá un <b>HTTP STATUS CODE</b>, como referencia la siguiente descripción de los códigos mas relevantes</p>
+<table class="table table-bordered apiEjemplo">
+  <thead>
+    <tr>
+      <th>Código HTTP</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" class="verdeGet">200</th>
+      <th scope="row">Solicitud procesada correctamente</th>
+    </tr>        
+    <tr>
+      <th scope="row" class="verdeGet">400</th>
+      <th scope="row">Parámetros incorrectos en la entrada</th>
+    </tr>        
+    <tr>
+      <th scope="row" class="verdeGet">404</th>
+      <th scope="row">Recurso no encontrado</th>
+    </tr>        
+    <tr>
+      <th scope="row" class="verdeGet">405</th>
+      <th scope="row">Método HTTP no permitido</th>
+    </tr>
+  </tbody>
+</table>  
+
     <br>
     <h4><b>Restricciones</b></h4>
     <ul>
@@ -200,7 +249,8 @@
       <li>El estado del servicio depende del <a href="http://www.tarjetabip.cl/" target="_blank">sitio oficial de la tarjeta bip!</a>, por lo tanto, si el servidor oficial de Transantiago está caído, esta API tambien lo estará =(</li>
     </ul>
   </div>
-
+<br>
+    
 
     </div>
   </div>
