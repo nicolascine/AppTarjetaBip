@@ -129,7 +129,7 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row" class="verdeGet">GET http://bip-servicio.herokuapp.com/api/v1/solicitudes.json?bip={123456}</th>
+          <th scope="row" class="verdeGet">GET http://bip-servicio.herokuapp.com/api/v1/solicitudes.json?bip={id}</th>
         </tr>
       </tbody>
     </table>    
