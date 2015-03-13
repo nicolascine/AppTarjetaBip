@@ -20,7 +20,7 @@ angular.module('angularCliente')
        $scope.loading = true;
        $scope.despliega = false;
        $scope.invalido = false;
-       $http({method : 'GET',url : 'http://bip-servicio.herokuapp.com/api/consulta/tarjeta/'+$scope.sendIdtarjeta})
+       $http({method : 'GET',url : 'http://bip-servicio.herokuapp.com/api/v1/solicitudes.json?bip='+$scope.sendIdtarjeta})
           .success(function(data, status) {
               $scope.despliega = true;
               $scope.loading = false;
