@@ -23,13 +23,13 @@ El único método soportado es __GET__
 api/consulta/tarjeta/{id} 
 ```
 
-| METHOD        | ENDPOINT                  | USAGE           | RETURNS     |
-| ------------- |:--------------------------| :---------------| :-----------|
-| GET           | api/consulta/tarjeta/{id} | Get bip! Status | bip! Status |
+| METHOD        | ENDPOINT                          | USAGE          | RETURNS   |
+| ------------- |:----------------------------------| :--------------| :---------|
+| GET           | /api/v1/solicitudes.json?bip={id} | Get bip Status | bip Status|
 
 | ENDPOINT                                                             |
 | :--------------------------------------------------------------------|
-| GET __http://bip-servicio.herokuapp.com/api/consulta/tarjeta/__{id}  |
+| GET __http://bip-servicio.herokuapp.com/api/v1/solicitudes.json?bip=__{id}  |
 
 | PARAMETROS   | VALOR                                       |
 |--------------|:--------------------------------------------|
@@ -40,29 +40,31 @@ api/consulta/tarjeta/{id}
 ### Ejemplo de uso
 Al hacer una llamada GET se obtiene un JSON con la data del estado de la tarjeta
 ```
-http://bip-servicio.herokuapp.com/api/consulta/tarjeta/123456
+http://bip-servicio.herokuapp.com/api/v1/solicitudes.json?bip=123456
 ```
 donde __123456__ corresponde al número de identificación de la tarjeta Bip.
 Siguiendo el ejemplo anterior, obtenemos de vuelta el siguiente JSON:
 ```
 {
-  "idTarjeta": "123456",
+  "id": "123456",
   "estadoContrato": "Contrato Activo",
   "saldoTarjeta": "$2.120",
   "fechaSaldo": "05/01/2005 20:14"
 }
 ```
-### Opciones adicionales
-Mediante el parámetro __format__ podemos indicar en qué formato recibiremos la información (por defecto JSON)
+### Formatos de respuesta
+Por defecto los datos se entregan en formato JSON, pero puedes indicar el formato esperado según las siguientes opciones
 
-JSON  : api/consulta/tarjeta/{id}__?format=json__    
-XML   : api/consulta/tarjeta/{id}__?format=xml__    
-HTML  : api/consulta/tarjeta/{id}__?format=html__    
+JSON  : api/v1/__solicitudes.json__?bip={id}   
+XML   : api/v1/__solicitudes.xml__?bip={id}  
+PHP   :api/v1/__solicitudes.php__?bip={id} (texto plano formateado como un Array php)  
+CSV   : api/v1/__solicitudes.csv__?bip={id}  
+SERIALIZED : api/v1/__solicitudes.serialized__?bip={id}   
 
-Ejemplo: Si indicamos como parámetro __?format=xml__
+Ejemplo: Si indicamos como formato de salida XML
 
 ```
-http://bip-servicio.herokuapp.com/api/consulta/tarjeta/123456?format=xml
+http://bip-servicio.herokuapp.com/api/v1/solicitudes.xml?bip=123456
 ```
 El resultado obtenido será:
 ```
