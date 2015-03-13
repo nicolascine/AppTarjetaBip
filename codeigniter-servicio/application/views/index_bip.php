@@ -198,7 +198,7 @@
     </div>
     <br>
     <h4>Ejemplo: Si indicamos el formato XML</h4>
-    <pre>http://bip-servicio.herokuapp.com/api/v1/<b>solicitudes.xml</b>?bip=12346</pre>
+    <pre>http://bip-servicio.herokuapp.com/api/v1/<b>solicitudes.xml</b>?bip=123456</pre>
     <br>
     <p>Obtendremos el siguiente resultado</p>
 <pre><code class="language-markup">
