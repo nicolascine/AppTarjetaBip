@@ -12,18 +12,19 @@ class Bip{
 	 * $CI extiende desde code igniter
 	 */
 	private $CI;
-	private $idNumber;
+	private $idBip;
+	public $error;
 	
 	/**
 	 * Constructor de la clase
 	 * Recibe ID de la tarjeta bip!
-	 * @param Int $idNumber
+	 * @param Int $idBip
 	 */
-	public function __construct($numTarjeta) {
+	public function __construct() {
 
 		$this->CI = &get_instance();
 		$this->CI->load->library('curl');
-		$this->idNumber = $numTarjeta;
+		$this->error = array('status' => false, 'error' => 'id de tarjeta inválido');
 	}
 
 	/**
@@ -32,13 +33,15 @@ class Bip{
 	 * @param Array  $dataArr resultado de la busqueda, estado tarjeta bip
 	 * @param String $dataArr Mensaje erorr
 	 */
- 	public function getData() {
+ 	public function getData($idBip) {
+		$this->idBip = $idBip;
+
  		/**
  		 * Previene error : Array to string conversion (codeIgniter)
  		 */
- 		$idTarjeta = implode(',' , $this->idNumber);
 
-		if ($idTarjeta == null && $idTarjeta == "") {
+
+		if ($this->idBip == null && $this->idBip == "") {
 			return null;
 
 		} else {
@@ -47,7 +50,7 @@ class Bip{
 			 * comienza el scraping q(o.~)p
 			 * */
 			$url = "http://pocae.tstgo.cl/PortalCAE-WAR-MODULE/SesionPortalServlet?accion=6&NumDistribuidor=99&NomUsuario=usuInternet&NomHost=AFT&NomDominio=aft.cl&Trx=&RutUsuario=0&NumTarjeta=";
-			$url .= $idTarjeta;
+			$url .= $this->idBip;
 			$url .= "&bloqueable=";
 			$dataArr = $this->CI->curl->simple_get($url);
 			
@@ -68,7 +71,7 @@ class Bip{
 				 * por nombres de variables
 				 */			
 				$search  = array('N&ordm; tarjeta bip! ', 'Estado de contrato', 'Saldo  tarjeta', 'Fecha saldo', 'Vencimiento Cuotas de transporte', 'Fecha Vencimiento');
-				$replace = array('idTarjeta', 'estadoContrato', 'saldoTarjeta', 'fechaSaldo', 'vencimientoCT', 'fechaVencimiento');
+				$replace = array('id', 'estadoContrato', 'saldoTarjeta', 'fechaSaldo', 'vencimientoCT', 'fechaVencimiento');
 
 
 				for ($i = 0; $i < $colums->length; $i++) {
@@ -90,13 +93,13 @@ class Bip{
 				}
 
 				if(count($dataArr) < 4){
-					$dataArr = 'ID de la tarjeta invalido';
+					$dataArr = $this->error;
 					return $dataArr;
 				}
 				//return json_encode($dataArr);
 				return $dataArr;		
 			}else{
-				$dataArr = 'ID de la tarjeta invalido';
+				$dataArr = $this->error;
 				return $dataArr;
 			}
 		}
