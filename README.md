@@ -59,7 +59,7 @@ Por defecto los datos se entregan en formato JSON, pero puedes indicar el format
 | FORMATO    | URL                                     | RETORNO
 | -----------|:----------------------------------------| :-------------------------------------------|
 | JSON       | /api/v1/__solicitudes.json__?bip={id}       | JSON standard				             |
-| XML        | /api/v1/__solicitudes.xml__?bip={id}        | JSON standard							 |
+| XML        | /api/v1/__solicitudes.xml__?bip={id}        | XML standard							 |
 | PHP        | /api/v1/__solicitudes.php__?bip={id}        | Texto plano formateado como un Array php|
 | CSV        | /api/v1/__solicitudes.csv__?bip={id}        | CSV standard							 |
 | SERIALIZED | /api/v1/__solicitudes.serialized__?bip={id} | Texto plano serializado				 |
