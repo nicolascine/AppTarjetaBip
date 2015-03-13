@@ -166,10 +166,10 @@ abstract class REST_Controller extends CI_Controller
     protected $_supported_formats   = array(
         'xml'           => 'application/xml',
         'json'          => 'application/json',
-        'jsonp'         => 'application/javascript',
+        //'jsonp'       => 'application/javascript',
         'serialized'    => 'application/vnd.php.serialized',
         'php'           => 'text/plain',
-        'html'          => 'text/html',
+        //'html'        => 'text/html',
         'csv'           => 'application/csv'
     );
 
@@ -558,11 +558,12 @@ abstract class REST_Controller extends CI_Controller
      */
     protected function _detect_output_format()
     {
-        $pattern = '/\.('.implode('|', array_keys($this->_supported_formats)).')$/';
-
+        //$pattern = '/\.('.implode('|', array_keys($this->_supported_formats)).')$/';
+        $pattern = '/^solicitudes.('.implode('|', array_keys($this->_supported_formats)).')/';
         // Check if a file extension is used when no get arguments provided
         $matches = array();
-        if (!$this->_get_args and preg_match($pattern, $this->uri->uri_string(), $matches)) {
+        // if (!$this->_get_args and preg_match($pattern, $this->uri->uri_string(), $matches)) {
+        if (preg_match($pattern, basename($this->uri->uri_string()), $matches)) {
             return $matches[1];
         }
 
