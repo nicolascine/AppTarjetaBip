@@ -55,11 +55,15 @@ Siguiendo el ejemplo anterior, obtenemos de vuelta el siguiente JSON:
 ### Formatos de respuesta
 Por defecto los datos se entregan en formato JSON, pero puedes indicar el formato esperado según las siguientes opciones
 
-JSON  : api/v1/__solicitudes.json__?bip={id}   
-XML   : api/v1/__solicitudes.xml__?bip={id}  
-PHP   :api/v1/__solicitudes.php__?bip={id} (texto plano formateado como un Array php)  
-CSV   : api/v1/__solicitudes.csv__?bip={id}  
-SERIALIZED : api/v1/__solicitudes.serialized__?bip={id}   
+
+| FORMATO    | URL                                     | RETORNO
+| -----------|:----------------------------------------| :-------------------------------------------|
+| JSON       | /api/v1/__solicitudes.json__?bip={id}       | JSON standard				             |
+| XML        | /api/v1/__solicitudes.xml__?bip={id}        | JSON standard							 |
+| PHP        | /api/v1/__solicitudes.php__?bip={id}        | Texto plano formateado como un Array php|
+| CSV        | /api/v1/__solicitudes.csv__?bip={id}        | CSV standard							 |
+| SERIALIZED | /api/v1/__solicitudes.serialized__?bip={id} | Texto plano serializado				 |
+
 
 Ejemplo: Si indicamos como formato de salida XML
 
