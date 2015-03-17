@@ -108,7 +108,7 @@ $("#enviaForm").click(function( event ) {
                       $("#loadingg").hide();
                       var html   = '<b>Saldo tarjeta bip: </b>'+data.saldoTarjeta+'<br>';
                           html  += '<b>Fecha saldo: </b>'+data.fechaSaldo+'<br>';
-                          html  += '<b>ID Tarjeta: </b>'+data.idTarjeta+'<br>';
+                          html  += '<b>ID Tarjeta: </b>'+data.id+'<br>';
                           html  += '<b>Estado contrato: </b>'+data.estadoContrato+'<br>';
                       if(data === 'ID de la tarjeta invalido'){html = 'ID de la tarjeta inválido'};
                                 $("#resultadoBusqueda .modal-body p").html(html);
