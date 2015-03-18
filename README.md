@@ -73,7 +73,7 @@ http://bip-servicio.herokuapp.com/api/v1/solicitudes.xml?bip=123456
 El resultado obtenido será:
 ```
 <xml>
-  <idTarjeta>123456</idTarjeta>
+  <id>123456</id>
   <estadoContrato>Contrato Activo</estadoContrato>
   <saldoTarjeta>$2.120</saldoTarjeta>
   <fechaSaldo>05/01/2005 20:14</fechaSaldo>
