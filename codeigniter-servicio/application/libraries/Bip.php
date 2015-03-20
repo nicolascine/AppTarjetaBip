@@ -8,9 +8,6 @@
  */
 class Bip{
 
-	/**
-	 * $CI extiende desde code igniter
-	 */
 	private $CI;
 	private $idBip;
 	public $error;
