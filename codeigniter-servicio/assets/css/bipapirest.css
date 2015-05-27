@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 html,body {
 	height:100%;
-    background:center no-repeat fixed url('http://www.transantiago.cl/images/imagen_fondo/imagen_fondo_1.jpg?id=68147493272406358954940317812769632369277040805742772536044385115677943729286');
+    background:center no-repeat fixed url('http://www.transantiago.cl/img/imgts/ConoceTransantiago(600x306).jpg');
     background-size: cover;
     font-family: 'Roboto', sans-serif;
 }
